@@ -1,32 +1,21 @@
 import { connection } from '../config/db.config.js';
 
-export async function getFormModel(formId) {
-  const query = 'SELECT * FROM forms';
-const rows = await connection.execute(query);
-console.log(rows, "*************")
-return rows;
-  // const query = `SELECT * FROM forms`;
-  // //WHERE id=${formId}`;
-  // const data = await connection.execute(query);
-  // return data;
-}
-
-
-
-async function editFormModel(formId) {
-  const query = `UPDATE * FROM forms WHERE id=${formId}`;
-  const data = await Database.executeQuery(query);
-  return data;
-}
-
-async function createFormModel(value) {
-  const query = `INSERT INTO forms (data) VALUES (${value})`;
-  const data = await Database.executeQuery(query);
-  return data;
-}
-
-async function deleteFormModel(formId) {
+export function getFormModel(formId, callback) {
   const query = `SELECT * FROM forms WHERE id=${formId}`;
-  const data = await Database.executeQuery(query);
-  return data;
+  connection.query(query, callback);
+}
+
+export function editFormModel(formId, value, callback) {
+  const query = `UPDATE forms SET data='${value}' WHERE id=${formId}`;
+  connection.query(query, callback);
+}
+
+export function createFormModel(value, callback) {
+  const query = `INSERT INTO forms (data) VALUES ('${value}')`;
+  connection.query(query, callback);
+}
+
+export function deleteFormModel(formId, callback) {
+  const query = `DELETE FROM forms WHERE id=${formId}`;
+  connection.query(query, callback);
 }
