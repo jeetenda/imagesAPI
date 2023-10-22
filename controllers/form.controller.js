@@ -1,73 +1,69 @@
+import { FormModel } from '../models/form.model.js'
 
-import { getFormModel, editFormModel, createFormModel, deleteFormModel } from '../models/form.model.js'
+class FormController {
 
-export function addForm(req, res) {
-    console.log("addForm called")
-    const {data} = req.body;
-    const jsonData = JSON.stringify(data)
-    createFormModel(jsonData, (err, data) => {
-        if(err) {
-            console.log(err);
-            res.status(500).json({error: "Error while creating"})
+    static async createForm(req, res) {
+        const { data } = req.body;
+
+        if (!data) {
+            res.status(500).json({ status: "FAILED", message: "All fields are required" })
         }
-        else {
-            console.log("data =", data);
-            res.status(200).json({ data: data });
+
+        try {
+            const doc = new FormModel({ data: data })
+            const result = await doc.save()
+            res.status(200).json({ status: "SUCCESS", message: "New form created successfully", data: result })
         }
-    })
+        catch (err) {
+            res.status(500).json({ status: "FAILED", message: "Unable to create form" })
+        }
+    }
+
+
+    static async updateForm(req, res) {
+        const { id } = req.params;
+        const { data } = req.body;
+
+        if (!data) {
+            res.status(500).json({ status: "FAILED", message: "All fields are required" })
+        }
+
+        try {
+            const result = await FormModel.updateOne({ _id: id }, { data: data })
+            res.status(200).json({ status: "SUCCESS", message: "Form updated successfully", data: result })
+        }
+        catch (err) {
+            res.status(500).json({ status: "FAILED", message: "Unable to update form" })
+        }
+    }
+
+
+    static async getForm(req, res) {
+        const { id } = req.params;
+
+        try {
+            const result = await FormModel.findById(id);
+            res.status(200).json({ status: "SUCCESS", message: "Fetched successfully", data: result })
+        }
+        catch (err) {
+            res.status(500).json({ status: "FAILED", message: "Unable to fetch form data" })
+        }
+    }
+
+
+    static async deleteForm(req, res) {
+        const { id } = req.params;
+
+        try {
+            await FormModel.deleteOne({ _id: id });
+            res.status(200).json({ status: "SUCCESS", message: "Form deleted successfully" })
+        }
+        catch (err) {
+            res.status(500).json({ status: "FAILED", message: "Unable to delete form data" })
+        }
+    }
+
 }
 
 
-export function editForm(req, res) {
-    const {id} = req.query;
-    const {data} = req.body;
-    const jsonData = JSON.stringify(data)
-    console.log("editForm called", id, data)
-    editFormModel(id, jsonData, (err, data) => {
-        if(err) {
-            console.log(err);
-            res.status(500).json({error: "Error while editing"})
-        }
-        else {
-            console.log("data =", data);
-            res.status(200).json({ data: data });
-        }
-    })
-}
-
-
-
-
-export function getForm(req, res) {
-    const {id} = req.query;
-    console.log("getForm route", id);
-    getFormModel(id, (err, data) => {
-        if (err) {
-            console.log(err);
-            res.status(500).json({ error: 'Error while getting' });
-        } else {
-            console.log("data =", data);
-            res.status(200).json({ data: data });
-        }
-    });
-}
-
-
-
-
-export function deleteForm(req, res) {
-    console.log("deleteForm called");
-    const {id} = req.query;
-    deleteFormModel(id, (err, data) => {
-        if (err) {
-            console.log(err);
-            res.status(500).json({ error: 'Error while deleting' });
-        } else {
-            console.log("data =", data);
-            res.status(200).json({ data: data });
-        }
-    });
-}
-
-
-
+export { FormController }
