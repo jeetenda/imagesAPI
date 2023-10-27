@@ -1,12 +1,12 @@
 import express from 'express'
-import { addForm, deleteForm, editForm, getForm } from '../controllers/form.controller.js'
+import { FormController } from '../controllers/form.controller.js'
 
 const router = express.Router()
 
-router.get('/', getForm)
-router.post('/', addForm)
-router.put('/', editForm)
-router.delete('/', deleteForm)
+router.get('/:id', FormController.getForm)
+router.post('/', FormController.createForm)
+router.put('/:id', FormController.updateForm)
+router.delete('/:id', FormController.deleteForm)
 
 export default router;
 
