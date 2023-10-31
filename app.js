@@ -14,10 +14,20 @@ const app = express();
 // database connection
 connection(DB_URL)
 
+const corsOptions = {
+    origin: '*', // Allow requests from any origin
+  };
+  
+
 // middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors())
+//app.use(cors())
+app.use(cors(corsOptions));
+
+
+
+
 
 // routes
 app.use('/form', formRoute)
