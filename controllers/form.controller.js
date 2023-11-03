@@ -50,6 +50,17 @@ class FormController {
         }
     }
 
+    static async getFormAll(req, res) {
+        try {
+            const result = await FormModel.find();
+          
+            res.status(200).json({ status: "SUCCESS", message: "Fetched successfully", data: result })
+        }
+        catch (err) {
+            res.status(500).json({ status: "FAILED", message: "Unable to fetch form data" })
+        }
+    }
+    
 
     static async deleteForm(req, res) {
         const { id } = req.params;
