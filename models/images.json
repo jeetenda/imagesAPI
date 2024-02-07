@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Burj Khalifa",
+    "description": "Burj Khalifa is the tallest building in the world, standing at a height of 828 meters. It offers stunning views of Dubai's skyline.",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/9/93/Burj_Khalifa.jpg/1200px-Burj_Khalifa.jpg"
+  },
+  {
+    "title": "Palm Jumeirah",
+    "description": "Palm Jumeirah is an artificial archipelago known for its luxurious hotels, beautiful beaches, and upscale shopping malls.",
+    "imageUrl": "https://media.cntraveller.com/photos/611bf4ddae2ff768cb253658/16:9/w_1280,c_limit/PalmJumeirah_CNT_22mar10_rex_646.jpg"
+  },
+  {
+    "title": "Dubai Mall",
+    "description": "Dubai Mall is one of the largest shopping malls in the world, offering a wide range of retail outlets, restaurants, and entertainment options.",
+    "imageUrl": "https://www.propertyfinder.ae/blog/wp-content/uploads/2023/07/1-9.jpg"
+  },
+  {
+    "title": "Burj Al Arab",
+    "description": "Burj Al Arab is a luxury hotel known for its iconic sail-shaped silhouette. It offers world-class hospitality and breathtaking views.",
+    "imageUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/457401213.jpg?k=56636839178d475e6c6af7e64ecd7af29b1f89adbc51c913ea0c535af2b1ebd9&o=&hp=1"
+  },
+  {
+    "title": "Dubai Marina",
+    "description": "Dubai Marina is a vibrant waterfront community known for its stunning skyscrapers, luxury yachts, and lively dining and entertainment options.",
+    "imageUrl": "https://www.barcelo.com/guia-turismo/wp-content/uploads/2022/03/dubai-marina-pal.jpg"
+  }
+]

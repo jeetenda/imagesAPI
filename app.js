@@ -1,7 +1,7 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import { config } from 'dotenv';
-import formRoute from './routes/form.route.js'
+import ImagesRoute from './routes/Images.route.js'
 import { connection } from './config/db.config.js';
 import cors from 'cors'
 
@@ -26,11 +26,9 @@ app.use(cookieParser());
 app.use(cors(corsOptions));
 
 
-
-
-
 // routes
-app.use('/form', formRoute)
+app.use('/images', ImagesRoute)
+
 
 app.listen(PORT, () => console.log(`Server running at ${PORT}`));
 
