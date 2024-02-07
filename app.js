@@ -1,7 +1,7 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import { config } from 'dotenv';
-import ImagesRoute from './routes/Images.route.js'
+import ImagesRoute from './routes/images.route.js'
 import { connection } from './config/db.config.js';
 import cors from 'cors'
 
