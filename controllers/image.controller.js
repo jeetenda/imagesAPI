@@ -13,7 +13,7 @@ class ImageController {
         }
     }
 
-    //  //postImagesAll
+    //  //postImagesAll for testing only 
 
     static async postImagesAll(req, res) {
         console.log(req.body,"--")
